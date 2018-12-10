@@ -9,7 +9,7 @@ using namespace std;
 class Einkaufskorb {
 
 private:
-        vector <Artikel>_Inhalt;
+        vector <Artikel*>_Inhalt;
 public:
 
     Einkaufskorb () {
@@ -18,31 +18,40 @@ public:
     ~Einkaufskorb () {
 
     }
-    void aufnehmen (Artikel a) {
+    void aufnehmen (Artikel &a) {
 
-        _Inhalt.push_back(a);
+        _Inhalt.push_back(&a);
 
     }
 
     double getGesamtpreis () {
         double gespreis = 0;
         for (auto e : _Inhalt) {
-            gespreis += e.getPreis();
+            gespreis += e->getPreis();
+            if (gespreis >=5) {
+                cout << "Du hast kein Geld, bitte geht schnell zur Bank" << endl;
+                break;
+            }
         }
         return gespreis;
     }
     double getAnzahl () {
-        int anzahl = 0;
-        for (int i =0; i< _Inhalt.size(); i++) {
-            anzahl = i++;
-        }
-        return anzahl;
+        return _Inhalt.size();
     }
-    string getInhalt () {
+   /* string getInhalt () {
         stringstream s;
         for (auto item : _Inhalt) {
-           s <<item.getArt() << item.getName() << item.getPreis() << endl;
+           s <<item->getArt() << item->getName() << item->getPreis() << endl;
         }
+        s.str();
+    }*/
+    string getInhalt() {
+        stringstream s;
+        for (unsigned int i= 0; i < _Inhalt.size(); i++){
+            s<< _Inhalt[i]->getArt() << " " << _Inhalt[i]->getName() << " " << _Inhalt[i]->getPreis() <<endl;
+        }
+        return s.str();
     }
 
 };
+

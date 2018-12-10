@@ -13,7 +13,7 @@ private:
 
 public:
 
-    Apfel(string art, string name, double preis) : Artikel ("Getraenk", "Bier", 1.5) {
+    Apfel() : Artikel ("Getraenk", "Bier", 1.5) {
 
     }
 

@@ -10,39 +10,53 @@
 using namespace std;
 
 int main() {
-    int i ;
+    int i;
+    bool done;
     Einkaufskorb einkaufskorb;
-    Artikel Apfel;
-    Artikel Pizza;
-    Artikel Bier;
-    cout << "=====================Supermarkt====================" << std::endl;
-    cout <<"(1) Apfel" << endl;
-    cout <<"(2) Bier" << endl;
-    cout <<"(3) Pizza" << endl;
-    cout <<"(0) Einkauf beenden" << endl;
-    cin >> i;
+    Artikel *artikel;
+    cout << "=====================Supermarkt====================" << endl;
+    cout << "(1) Apfel" << endl;
+    cout << "(2) Bier" << endl;
+    cout << "(3) Pizza" << endl;
+    cout << "(0) Einkauf beenden" << endl;
 
-    while  (i<4) {
-        if (i == 1) {
-            cout <<"(1) Apfel" << endl;
-            einkaufskorb.aufnehmen(Apfel);
-        }
-        else if (i == 2) {
-            cout <<"(2) Bier" << endl;
-            einkaufskorb.aufnehmen(Pizza);
-        }
-        else if (i == 3) {
-            cout <<"(3) Pizza" << endl;
-            einkaufskorb.aufnehmen(Bier);
-        }
-        else if (i == 0) {
-            cout <<"(0) Einkauf beenden" << endl;
-            cout << "=====================Supermarkt====================" << std::endl;
-            cout << "Anzahl: " << einkaufskorb.getAnzahl();
-            cout << "Gesamtpreis: " << einkaufskorb.getGesamtpreis();
-            cout << "Folgendes wurde eingejkauft: " << einkaufskorb.getInhalt();
-            break;
+    while (done == false) {
+        cin >> i;
+        switch (i) {
+            case 1 : {
+                //done = true;
+                artikel = new Apfel();
+                einkaufskorb.aufnehmen(*artikel);
+                cout << "(1) Apfel" << endl;
+                break;
+            }
+            case 2 : {
+                //done = true;
+                artikel = new Bier();
+                einkaufskorb.aufnehmen(*artikel);
+                cout << "(2) Bier" << endl;
+                break;
+            }
+            case 3 : {
+                //done = true;
+                artikel = new Pizza();
+                einkaufskorb.aufnehmen(*artikel);
+                cout << "(3) Pizza" << endl;
+                break;
+            }
+            case 0: {
+                //done = true;
+                cout <<"(0) Einkauf beenden" << endl;
+                cout << "=====================Supermarkt====================" << endl;
+                cout << "Folgendes wurde eingekauft: \n" << einkaufskorb.getInhalt()<< endl;
+                cout << "Anzahl: " << einkaufskorb.getAnzahl()<< endl;
+                cout << "Gesamtpreis: " << einkaufskorb.getGesamtpreis()<< endl;
+                break;
+            }
+            default : {
+                cout << "fehler" << endl;
+                break;
+            }
         }
     }
-    return 0;
 }

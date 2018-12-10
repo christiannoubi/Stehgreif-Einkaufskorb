@@ -13,7 +13,7 @@ private:
 
 public:
 
-    Pizza(string art, string name, double preis): Artikel ("Fertiggericht", "Pizza", 2.99){
+    Pizza(): Artikel ("Fertiggericht", "Pizza", 2.99){
 
     }
 
